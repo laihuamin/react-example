@@ -76,3 +76,16 @@ ReactDOM.render(
     );
 </script>
 ```
+## demo5 components props
+组件可以从外部传入参数，然后内部用this.props获取
+```
+class Mytitle extends React.Component {
+    render () {
+        return <h1>Hello {this.props.name}!</h1>;           
+    }
+}
+ReactDOM.render(
+    <Mytitle name="lai"/>,
+    document.getElementById('example')
+);
+```
