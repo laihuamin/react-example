@@ -54,3 +54,25 @@ ReactDOM.render(
     document.getElementById('example')
 );
 ```
+## demo4 react components
+定义一个react的组件
+```
+<script type="text/babel">
+    //ES6
+    class MyComponent extends React.Component {
+        render() {
+            return <h1>Hello Min</h1>
+        }
+    };
+    //ES5
+    var HelloMessage = React.createClass({
+        render: function() {
+            return <h1>Hello Lai</h1>;
+        }
+    });
+    ReactDOM.render(
+        <MyComponent/>,
+        document.getElementById('example')
+    );
+</script>
+```
