@@ -122,3 +122,25 @@ render(){
 }
 ```
 这里用bind方法绑定state。
+
+## demo7 this.props.child
+```
+class Mytitle extends React.Component {
+    render () {
+        return<ol>
+            {
+                React.Children.map(this.props.children, function (child) {
+                    return <li>{child}</li>
+                })
+            }
+        </ol>
+    }
+}
+ReactDOM.render(
+    <Mytitle>
+        <span>Hello</span>
+        <span>World</span>
+    </Mytitle>,
+    document.getElementById('example')
+)
+```
