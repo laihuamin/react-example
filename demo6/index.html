@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component state</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class Mytitle extends React.Component {
+            constructor(...args){
+                super(...args);
+                this.state = {
+                    name: '访问者'
+                };
+            }
+            handleChange(e) {
+                let name = e.target.value;
+                this.setState({
+                    name: name
+                });
+            }
+            render(){
+                return <div>
+                        <input
+                            type="text"
+                            onChange={this.handleChange.bind(this)}
+                        />
+                        <p>你好，{this.state.name}</p>
+                    </div>;
+            }
+        }
+        ReactDOM.render(
+            <Mytitle/>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

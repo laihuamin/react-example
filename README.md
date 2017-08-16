@@ -89,3 +89,36 @@ ReactDOM.render(
     document.getElementById('example')
 );
 ```
+## demo6 components state
+组件状态是用components的state，先代码一段一段来看
+```
+class MyTitle extends React.Component {
+    constructor(...args) {
+      super(...args);
+      this.state = {
+        name: '访问者'
+      };
+    }
+```
+constructor代表组件的构造函数，...args代表组件的一些参数,super(...args)是ES6的写法，this.state对象储存的是组件状态
+```
+handleChange(e) {
+    let name = e.target.value;
+    this.setState({
+        name: name
+    });
+}
+```
+这个方法是用来改变组件状态的，this.setState()方法去改变state的状态
+```
+render(){
+    return <div>
+            <input
+                type="text"
+                onChange={this.handleChange.bind(this)}
+            />
+            <p>你好，{this.state.name}</p>
+        </div>;
+}
+```
+这里用bind方法绑定state。
