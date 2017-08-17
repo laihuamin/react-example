@@ -144,3 +144,55 @@ ReactDOM.render(
     document.getElementById('example')
 )
 ```
+
+## demo8 react-lifecycle
+```
+class Mytitle extends React.Component {
+    constructor(...args){
+        super(...args);
+        this.state = {
+            loading: true,
+            error: null,
+            data: null
+        };
+    }
+```
+这里先定义一个组件以及她的状态，然后在接下来的生命周期中获取数据
+```
+componentDidMount() {
+    const url = 'https://api.github.com/search/repositories?q=javascript&sort=stars';
+    $.getJSON(url).done(
+        (value) => this.setState({
+            loading: false,
+            data: value
+        })
+    ).fail(
+        (jqXHR, textStatus) => this.setState({
+            loading: false,
+            error: jqXHR.status
+        })
+    );
+}
+```
+获取到的数据存在组件的状态之中，在这个状态的里面我们可以在一下对数据进行操作
+```
+render() {
+    if(this.state.loading){
+        return <div>Loading...</div>
+    }else if(this.state.error !== null){
+        return <span>Error: {this.state.rror}</span>
+    }else {
+        const program = this.state.data.items;
+        console.log(program);
+        const result = [];
+        program.forEach((item) => {
+            var p = <li>{item.name}</li>
+            result.push(p);
+        });
+        return <div>
+            <ul>{result}</ul>
+        </div>
+    }
+}
+```
+在这边一共分三部分，第一部分是正在加载过程中，第二部分是加载错误，第三部分是当加载出数据了之后，展示的页面。
